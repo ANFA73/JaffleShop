@@ -31,15 +31,3 @@ renamed as (
 )
 
 select * from renamed
-union all 
-select 
-    null as order_id
-    null as location_id
-    null as customer_id
-    0 as subtotal_cents
-    0 as tax_paid_cents
-    0 as order_total_cents
-    {{ cents_to_dollars('0') }} as subtotal,
-    {{ cents_to_dollars('0') }} as tax_paid,
-    {{ cents_to_dollars('0') }} as order_total,
-    {{ dbt.date_trunc('day','current_date()') }} as ordered_at
